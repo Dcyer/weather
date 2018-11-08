@@ -55,7 +55,7 @@ class Weather
             'key'        => $this->key,
             'city'       => $city,
             'output'     => $format,
-            'extensions' => $type,
+            'extensions' => $types[$type],
         ]);
 
         try {
