@@ -1,27 +1,39 @@
-**Weather**
--
-#####基于 高德开放平台 的 PHP 天气信息组件。
 
-####安装
-````$ composer require dcynsd/weather -vvv````
+<h1 align="center">Weather</h1>
 
-####配置
-#####在使用本扩展之前，你需要去 高德开放平台 注册账号，然后创建应用，获取应用的 API Key。
+<p align="center">:rainbow: 基于 高德开放平台 的 PHP 天气信息组件。</p>
 
-####使用
-```````
+[![Build Status](https://travis-ci.org/overtrue/weather.svg?branch=master)](https://travis-ci.org/overtrue/weather)
+
+##安装
+
+```sh
+$ composer require dcynsd/weather -vvv
+```
+
+##配置
+
+在使用本扩展之前，你需要去 高德开放平台 注册账号，然后创建应用，获取应用的 API Key。
+
+##使用
+
+```sh
 use Overtrue\Weather\Weather;
 
 $key = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx';
 
 $weather = new Weather($key);
-```````
+```
 
-####获取实时天气
-`$response = $weather->getWeather('深圳');`
+##获取实时天气
+
+```sh
+$response = $weather->getWeather('深圳');
+```
 
 示例：
-```````
+
+```sh
 {
     "status": "1",
     "count": "1",
@@ -41,13 +53,17 @@ $weather = new Weather($key);
         }
     ]
 }
-```````
+```
 
-####获取近期天气预报
-`$response = $weather->getWeather('深圳', 'all');`
+##获取近期天气预报
+
+```sh
+$response = $weather->getWeather('深圳', 'all');
+```
 
 示例：
-```````
+
+```sh
 {
     "status": "1", 
     "count": "1", 
@@ -112,17 +128,19 @@ $weather = new Weather($key);
         }
     ]
 }
-```````
+```
 
-####获取 XML 格式返回值
+##获取 XML 格式返回值
 
 第三个参数为返回值类型，可选 json 与 xml，默认 json：
 
-`$response = $weather->getWeather('深圳', 'all', 'xml');`
+```sh
+$response = $weather->getWeather('深圳', 'all', 'xml');
+```
 
 示例：
 
-```````
+```sh
 <response>
     <status>1</status>
     <count>1</count>
@@ -142,38 +160,43 @@ $weather = new Weather($key);
         </live>
     </lives>
 </response>
-```````
+```
 
-####参数说明
-`array | string   getWeather(string $city, string $type = 'base', string $format = 'json')`
+##参数说明
 
-``````
+```sh
+array | string   getWeather(string $city, string $type = 'base', string $format = 'json')
+```
+
+```sh
 $city - 城市名，比如：“深圳”；
 $type - 返回内容类型：base: 返回实况天气 / all:返回预报天气；
 $format - 输出的数据格式，默认为 json 格式，当 output 设置为 “xml” 时，输出的为 XML 格式的数据。
-``````
+```
 
-####在 Laravel 中使用
+##在 Laravel 中使用
 
 在 Laravel 中使用也是同样的安装方式，配置写在 config/services.php 中：
 
-``````
+```sh
     .
     .
     .
      'weather' => [
         'key' => env('WEATHER_API_KEY'),
     ],
-``````
+```
 
 然后在 .env 中配置 WEATHER_API_KEY ：
 
-`WEATHER_API_KEY=xxxxxxxxxxxxxxxxxxxxx`
+```sh
+WEATHER_API_KEY=xxxxxxxxxxxxxxxxxxxxx`
+```
 
 可以用两种方式来获取 Overtrue\Weather\Weather 实例：
 
-#####方法参数注入
-``````
+##方法参数注入
+```sh
     .
     .
     .
@@ -184,10 +207,10 @@ $format - 输出的数据格式，默认为 json 格式，当 output 设置为 �
     .
     .
     .
-``````
+```
 
-#####服务名访问
-``````
+##服务名访问
+```sh
     .
     .
     .
@@ -198,12 +221,12 @@ $format - 输出的数据格式，默认为 json 格式，当 output 设置为 �
     .
     .
     .
-``````
+```
 
-#####参考
+##参考
 
 高德开放平台天气接口
 
-####License
+##License
 
 MIT
