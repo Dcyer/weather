@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the dcynsd/weather.
+ *
+ * (c) dcynsd <dcynsd@gmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Dcynsd\Weather\Tests;
 
 use Dcynsd\Weather\Exceptions\HttpException;
@@ -17,14 +26,14 @@ class WeatherTest extends TestCase
     {
         // json
         $response = new Response(200, [], '{"success": true}');
-        $client   = \Mockery::mock(Client::class);
+        $client = \Mockery::mock(Client::class);
         $client->allows()->get('https://restapi.amap.com/v3/weather/weatherInfo', [
             'query' => [
-                'key'        => 'mock-key',
-                'city'       => '深圳',
-                'output'     => 'json',
+                'key' => 'mock-key',
+                'city' => '深圳',
+                'output' => 'json',
                 'extensions' => 'base',
-            ]
+            ],
         ])->andReturn($response);
 
         $w = \Mockery::mock(Weather::class, ['mock-key'])->makePartial();
@@ -34,13 +43,13 @@ class WeatherTest extends TestCase
 
         // xml
         $response = new Response(200, [], '<hello>content</hello>');
-        $client   = \Mockery::mock(Client::class);
+        $client = \Mockery::mock(Client::class);
         $client->allows()->get('https://restapi.amap.com/v3/weather/weatherInfo', [
             'query' => [
-                'key'        => 'mock-key',
-                'city'       => '深圳',
+                'key' => 'mock-key',
+                'city' => '深圳',
                 'extensions' => 'all',
-                'output'     => 'xml',
+                'output' => 'xml',
             ],
         ])->andReturn($response);
 
