@@ -18,7 +18,7 @@ $ composer require dcynsd/weather -vvv
 ## 使用
 
 ```sh
-use Overtrue\Weather\Weather;
+use Dcynsd\Weather\Weather;
 
 $key = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx';
 
@@ -28,7 +28,7 @@ $weather = new Weather($key);
 ## 获取实时天气
 
 ```sh
-$response = $weather->getWeather('深圳');
+$response = $w->getLiveWeather('深圳');
 ```
 
 示例：
@@ -58,7 +58,7 @@ $response = $weather->getWeather('深圳');
 ## 获取近期天气预报
 
 ```sh
-$response = $weather->getWeather('深圳', 'all');
+$response = $w->getForecastsWeather('深圳');
 ```
 
 示例：
